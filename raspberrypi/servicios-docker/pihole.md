@@ -114,7 +114,9 @@ El aceso se hace mediante navegador web a través de la URL http://ip-raspberry:
 <br><br>
 
 # Configuración extra
-Estos son los parámetros iniciales de configuración:
+En primer lugar, es importantísimo configurar nuestra raspberry con IP estática (dentro de nuestro router), para así poder usar esta IP como servidor DNS (en mi caso he usado 192.168.1.10).
+
+Después se debe configurar unas DNS para nuestro servidor DNS, es decir, como la Rasp solo nos hará de puente, filtrando todos los dominios de publicidad, hay que proporcionarle unas DNS, para el resto de dominios. Así que eso se configura aquí:
 
 ![Configuracion](../../img/ima-raspberrypi-servicios-pihole-conf.ini-01.gif)
 

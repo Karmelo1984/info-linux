@@ -29,19 +29,16 @@ Raspberry Pi es una plataforma versátil y asequible que ha ganado popularidad e
 1. [Crear un servidor NAS - OpenMedia Vault](./servidorNAS.md)
 2. [Instalar Docker y Docker compose en "Raspberry Pi"](./docker.md)
 3. [Utilidades varias](./utilidadespi.md)
-4. [Instalación personal](#instalación-personal)
+4. [Configuración Personalizada de la Instalación](#configuración-personalizada-de-la-instalación)
    
 [<< Página principal >>](../README.md)<br>
 [Índice](#índice ) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#raspberry-pi)
 <br><br>
 
-# Instalación personal
-La configuración de instalada se describe en los siguientes apartados.
-
-Me decanté por tener dos equipos por varias razones:
-1. Equipo 1 se centra solo en los servicios DNS y DHCP.
-2. Equipo 2 es presta servicios como DNS secundario, por si cae el primero, y además todo el resto de servicios, entre ellos Plex y Samba, para compartir mis archivos. 
-   Realmente funciona como un servidor NAS, pero sin tener instalado ningún software NAS específico.
+# Configuración Personalizada de la Instalación
+Se optó por configurar dos equipos por dos razones:
+1. **Equipo 1:** se centra solo en los servicios DNS y DHCP.
+2. **Equipo 2:** se centra en dar servicio como DNS secundario en caso de que el primero falle. Además de alojar el resto de servicios, incluyendo Plex y Samba, para compartir archivos. Realmente funciona como un servidor NAS, pero sin tener instalado ningún software específico de NAS.
 
 ## Equipo 1: Raspberry Pi 3 Model B Rev 1.2 
 
@@ -75,10 +72,10 @@ neofetch
 ```
 
 ### Método para hacer backup
-Como tengo un sistema de DNS redundante con `DNS primario` y `DNS secundario` puedo apagar este equipo el tiempo necesario para hacer una imagen `img` de la tarjeta MicroSD, y después optimizo el tamaño de la imagen resultante haciendo uso de [`pishrink`](./utilidadespi.md#reducir-imagen-de-microsd).
+Como se tiene un sistema DNS redundante con `DNS primario` y `DNS secundario` se puede apagar el **equipo 1** el tiempo necesario para hacer una imagen `img` de la tarjeta MicroSD. Además se podrá optimizar el tamaño de la imagen resultante haciendo uso de [`pishrink`](./utilidadespi.md#reducir-imagen-de-microsd).
 
 ### Elementos instalados
-Este equipo solo presta servicios como DNS primario. EStá conectado directamente al router mediante cable ethernet.
+Este equipo actúa exclusivamente como DNS primario y está conectado directamente al router mediante cable Ethernet.
 
 1. Paquetes importantes instalados:
    * `Docker:` Plataforma de contenedores que permite empaquetar, distribuir y ejecutar aplicaciones de manera eficiente. [`Configuración`](./docker.md).
@@ -113,12 +110,12 @@ neofetch
 ```
 
 ### Método para hacer backup
-Como tengo un sistema de DNS redundante con `DNS primario` y `DNS secundario` puedo apagar este equipo el tiempo necesario para hacer una imagen `img` de la tarjeta MicroSD, y después optimizo el tamaño de la imagen resultante haciendo uso de [`pishrink`](./utilidadespi.md#reducir-imagen-de-microsd).
+Como se tiene un sistema DNS redundante con `DNS primario` y `DNS secundario` se puede apagar el **equipo 2** el tiempo necesario para hacer una imagen `img` de la tarjeta MicroSD. Además se podrá optimizar el tamaño de la imagen resultante haciendo uso de [`pishrink`](./utilidadespi.md#reducir-imagen-de-microsd).
 
-Durante el tiempo que debo tener apagado el sistema, obviamente no puedo tener el resto de servicios operativos, ya que no hay redundancia en el resto de servicios.
+Durante el tiempo que el sistema esté apagado, no estarán operativos el resto de servicios, ya que no cuentan con redundancia.
 
 ### Elementos instalados
-Este equipo presta servicios como DNS secundario. Está conectado a través de wifi al router y sobre él configuro todos los elementos que me interesan.
+Este equipo actúa como DNS secundario y está conectado al router a través de wifi. En él, se configuran todos los servicios que interesen implementar.
 
 1. Paquetes importantes instalados:
    * `Docker:` Plataforma de contenedores que permite empaquetar, distribuir y ejecutar aplicaciones de manera eficiente. [`Configuración`](./docker.md).
@@ -133,7 +130,7 @@ Este equipo presta servicios como DNS secundario. Está conectado a través de w
    * `Wireguard:` Protocolo VPN de código abierto y de alto rendimiento. [`Configuración`](./servicios-docker/wireguard.md).
 
 
-[Inicio de sección](#instalación-personal) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice ) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#raspberry-pi)
+[Configuración Personalizada de la Instalación](#configuración-personalizada-de-la-instalación) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice ) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#raspberry-pi)
 <br><br>
 
 # Sección 1

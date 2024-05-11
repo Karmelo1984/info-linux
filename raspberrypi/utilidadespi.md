@@ -16,9 +16,7 @@
 <br><br>
 
 # [Reducir imagen de MicroSD](https://github.com/Drewsif/PiShrink/blob/master/README.md)
-
-
-PiShrink es un script de bash que reduce automáticamente una imagen de Pi, que luego se redimensionará al tamaño máximo de la tarjeta SD al arrancar. Esto hará que poner la imagen de nuevo en la tarjeta SD sea más rápido y las imágenes reducidas se comprimirán mejor. Además, la imagen reducida se puede comprimir con gzip y xz para crear una imagen aún más pequeña. Se admite la compresión paralela de la imagen utilizando múltiples núcleos.
+**PiShrink** es un script de bash diseñado para reducir automáticamente imágenes de **Raspberry Pi**, permitiendo que se ajusten al tamaño máximo de una tarjeta SD al arrancar. Esta herramienta acelera el proceso de restauración de imágenes en tarjetas SD y garantiza una mejor compresión de las imágenes reducidas. Además, ofrece la opción de comprimir la imagen reducida utilizando gzip y xz, lo que resulta en un tamaño aún más pequeño. **PiShrink** también es compatible con la compresión paralela de imágenes utilizando múltiples núcleos del procesador.
 
 ## Opciones
 ```
@@ -86,7 +84,7 @@ Shrunk pi.img from 30G to 3.1G
 <br><br>
 
 # Añadir un disco duro externo a una Raspberry Pi
-El disco duro externo suele venir con sistemas de archivos NTFS o FAT, siendo este último más compatible pero propenso a fragmentarse y con limitaciones en el tamaño de archivos. NTFS ofrece mejor rendimiento, pero a través de FUSE en modo usuario. La solución ideal es formatearlo con ext4 para un rendimiento óptimo en GNU/Linux.
+Los discos duros externos comúnmente utilizan sistemas de archivos NTFS o FAT. NTFS ofrece mejor rendimiento, pero la solución ideal para GNU/Linux es formatearlos con ext4.
 
 ## Comprobar la información del disco
 Para verificar la información del disco externo conectado a la Raspberry Pi, sigue estos pasos:
@@ -94,9 +92,9 @@ Para verificar la información del disco externo conectado a la Raspberry Pi, si
 ```bash
 lsblk -fm
 ```
-* `lsblk` nos aporta información sobre los dispositivos de almacenamiento.
-* `-f` incluye información sobre los sistemas de archivos instalados.
-* `-m` incluye infromación sobre quién es su propietario, su tamaño, etc.
+* `lsblk` informa sobre los dispositivos de almacenamiento.
+* `-f` informa sobre los sistemas de archivos instalados.
+* `-m` informa sobre quién es su propietario, su tamaño, etc.
 
 Desmontar las particiones, por ejemplo:
 ```bash
