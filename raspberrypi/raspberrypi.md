@@ -120,7 +120,7 @@ Este equipo actúa como DNS secundario y está conectado al router a través de 
 1. Paquetes importantes instalados:
    * `Docker:` Plataforma de contenedores que permite empaquetar, distribuir y ejecutar aplicaciones de manera eficiente. [`Configuración`](./docker.md).
 2. Contenedores docker:
-   * `Heimdall:` Panel de inicio que permite acceder fácilmente a aplicaciones web y servicios en un solo lugar. [`Configuración`](./servicios-docker/heimdall.md).
+   * `Homarr:` Panel de inicio que permite acceder fácilmente a aplicaciones web y servicios en un solo lugar. [`Configuración`](./servicios-docker/homarr.md).
    * `Homebridge:` Puente de software para acceder a dispositivos de hogar inteligente desde la plataforma Apple HomeKit. [`Configuración`](./servicios-docker/homebridge.md).
    * `PiHole:` Servidor de DNS que bloquea anuncios y rastreadores en toda la red. [`Configuración`](./servicios-docker/pihole.md).
    * `Plex:` Servidor de medios que permite organizar, transmitir y acceder a contenido multimedia. [`Configuración`](./servicios-docker/plex.md).

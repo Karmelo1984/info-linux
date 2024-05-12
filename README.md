@@ -9,7 +9,7 @@ Bienvenido a la documentación de la 'Enciclopedia' para Linux. Este documento e
 
 1. [Raspberry Pi:](./raspberrypi/raspberrypi.md) Todo sobre el mundo de Raspberry Pi.
 2. [Docker:](./docker/docker.md) Guías y consejos para trabajar con Docker.
-3. [SSH:](./general-linux/ssh.md) Cómo configurar y utilizar SSH en Linux.
+3. [SSH:](./general-linux/redes/ssh.md) Cómo configurar y utilizar SSH en Linux.
 4. [mhddfs:](./general-linux/sistema-de-archivos/mhddfs.md) Información sobre el sistema de archivos mhddfs.
 5. [TBD:]()
 6. [TBD:]()

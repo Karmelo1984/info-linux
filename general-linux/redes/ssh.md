@@ -1,6 +1,6 @@
 # SSH
 
-![Header](../img/ima-ssh-header-01.png)
+![Header](../../img/ima-ssh-header-01.png)
 
 SSH (Secure Shell) es un protocolo de red que permite a los usuarios acceder de forma segura a una computadora remota a través de una conexión encriptada. Proporciona un canal seguro sobre una red no segura, como Internet, para realizar tareas como ejecutar comandos, transferir archivos y gestionar sistemas de forma remota.
 
