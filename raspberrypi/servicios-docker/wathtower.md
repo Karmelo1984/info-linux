@@ -29,7 +29,7 @@ vim ~/docker/watchtower/docker-compose.yml
 # Esta es la estructura que debe quedar (antes de iniciar el contenedor)
 tree ~
 
-HOME/docker/<<<example>>>
+HOME/docker/watchtower
 ├── docker-compose.yml
 └── volume
 ```
@@ -72,7 +72,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#header)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#header)
 <br><br>
 
 # Acceso

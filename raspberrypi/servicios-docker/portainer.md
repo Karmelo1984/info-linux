@@ -15,7 +15,7 @@ Puedes instalar Portainer directamente en tu Raspberry Pi utilizando Docker, lo 
 - [Índice](#índice)
 - [Definir ruta de instalación](#definir-ruta-de-instalación)
 - [Variables de entorno necesarias](#variables-de-entorno-necesarias)
-- [Despliegue `docker-compose.yml`](#despliegue-pihole-docker-composeyml)
+- [Despliegue `docker-compose.yml`](#despliegue-docker-composeyml)
 - [Acceso](#acceso)
 
 [<< Raspberry Pi >>](../raspberrypi.md)<br>
@@ -84,7 +84,7 @@ volumes:
 
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#portainerio)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#portainerio)
 <br><br>
 
 # Acceso

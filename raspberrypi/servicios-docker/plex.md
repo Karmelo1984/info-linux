@@ -86,19 +86,19 @@ services:
 
 # Definición de volúmenes
 volumes:
-  config:                        # Volumen para la biblioteca de Plex
+  config:                        # Volumen para la configuración Plex
     driver_opts:
       type: none
       device: ${HOME}/docker/plex/volume/config
       o: bind
-  data:                              # Volumen para las series de TV
+  data:                              # Volumen para contenido multimedia
     driver_opts:
       type: none
-      device: /mnt/server              #En esta ruta se montará mhddfs con toda la biblioteca multimedia
+      device: /mnt/server              # Montar con mhddfs toda la biblioteca multimedia
       o: bind
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#plex)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#plex)
 <br><br>
 
 # Acceso

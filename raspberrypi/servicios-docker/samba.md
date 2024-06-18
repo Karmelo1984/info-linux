@@ -12,7 +12,7 @@ Samba en contenedores Docker simplifica el compartir archivos en tu red local, p
 - [Índice](#índice)
 - [Definir ruta de instalación](#definir-ruta-de-instalación)
 - [Variables de entorno necesarias](#variables-de-entorno-necesarias)
-- [Despliegue `docker-compose.yml`](#despliegue-pihole-docker-composeyml)
+- [Despliegue `docker-compose.yml`](#despliegue-docker-composeyml)
 - [Acceso](#acceso)
 
 [<< Raspberry Pi >>](../raspberrypi.md)<br>
@@ -23,7 +23,8 @@ Samba en contenedores Docker simplifica el compartir archivos en tu red local, p
 Todas los ficheros relacionados con nuestra instalación se alojarán dentro de un directorio ubicado en `~/docker`, a fin de tener organizado nuestro sistema de ficheros.
 
 ```bash
-mkdir -p ~/docker/samba/volume/storage
+mkdir -p ~/docker/samba/volume/config
+mkdir -p /mnt/server                 # Usar como punto de montaje 'mhddfs' posteriormente.
 vim ~/docker/samba/docker-compose.yml
 
 # Esta es la estructura que debe quedar (antes de iniciar el contenedor)
@@ -32,7 +33,13 @@ tree ~
 HOME/docker/samba
 ├── docker-compose.yml
 └── volume
-    └── storage
+    └── config
+
+/
+├── ...
+├── mnt
+│   └── server
+└── ...
 ```
 
 
@@ -67,24 +74,30 @@ services:
       USER: "samba"
       PASS: "secret"
 
+    volumes:
+      - config:/etc/samba
+      - data:/storage        # Ruta carpeta compartida
+
     ports:
       - "137:137"               # Puerto protocolo NetBios
       - "138:138"               # Puerto protocolo NetBios
       - "139:139"               # Puerto protocolo SMB
       - "445:445"               # Puerto protocolo SMB
 
-    volumes:
-      - media:/storage        # Ruta carpeta compartida
-
 volumes:
-  media:
+  config:                        # Volumen para la configuracion Samba
     driver_opts:
       type: none
-      device: /media
+      device: ${HOME}/docker/samba/volume/config
+      o: bind
+  data:                              # Volumen para las series de TV
+    driver_opts:
+      type: none
+      device: /mnt/server              # Montar con mhddfs toda la biblioteca multimedia
       o: bind
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#samba)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#samba)
 <br><br>
 
 # Acceso

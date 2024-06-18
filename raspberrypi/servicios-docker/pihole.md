@@ -14,10 +14,11 @@ Existen otras formas de instalación, pero he elegido Docker por las múltiples 
 - [Índice](#índice)
 - [Definir ruta de instalación](#definir-ruta-de-instalación)
 - [Variables de entorno necesarias](#variables-de-entorno-necesarias)
+- [Pasos previos](#pasos-previos)
 - [Despliegue `docker-compose.yml`](#despliegue-docker-composeyml)
 - [Acceso](#acceso)
 - [Configuración extra](#configuración-extra)
-- [Problemas conocidos](#problemas-conocidos)
+- [Revertir cambios](#revertir-cambios)
 
 [<< Raspberry Pi >>](../raspberrypi.md)<br>
 [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
@@ -53,6 +54,33 @@ Esta son las variables de entorno que tenemos que definir para poder levantar nu
 
 [Inicio de sección](#variables-de-entorno-necesarias) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
 <br><br>
+
+# Pasos previos
+En primer lugar debemos deshabilitar el servicio `systemd-resolved` ya que este servicio es el encargado de resolver los `dns` y por lo tanto opera en el puerto `53` al igual que `pi-hole`. Así que es neceario deshabilitarlo.
+
+```bash
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+```
+
+Seguidamente debemos editar el `dns` en el archivo `resolv.conf`.
+
+```bash
+sudo vim /etc/resolv.conf
+
+## Tendremos algo tal que esto
+nameserver 127.0.0.53
+
+## Lo sustituimos por esto
+# Cloudflare DNS primario
+nameserver 1.1.1.1
+# Cloudflare DNS secundario
+nameserver 1.0.0.1
+```
+
+[Inicio de sección](#pasos-previos) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
+<br><br>
+
 
 # Despliegue `docker-compose.yml`
 El despliegue se puede hacer tanto desde `portainer` como desde docker compose con el comando `docker-compose up -d`.
@@ -104,7 +132,7 @@ volumes:
       o: bind
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
 <br><br>
 
 # Acceso
@@ -125,18 +153,34 @@ Después se debe configurar unas DNS para nuestro servidor DNS, es decir, como l
 [Inicio de sección](#configuración-extra) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
 <br><br>
 
-# Problemas conocidos
-Puede ser que al toquetar los ficheros relacionados a las DNS, pueda parecer que nos quedemos sin internet.
+# Revertir cambios
+Al desisntalar el servicio de pi-hole, para reestablecer internet en nuestra raspberry, deberemos deshacer los cambios hechos en el apartado [`Pasos previos`](#pasos-previos)
 
-Si apagamos el servicio de Pi-Hole, debemos introducir al menos unas DNS's válidad en nuestro fichero `/etc/resolv.conf`.
+
+Por lo que debemos editar el `dns` en el archivo `resolv.conf`.
 
 ```bash
 sudo vim /etc/resolv.conf
 
-#DNS de google
-nameserver 8.8.8.8
-nameserver 8.8.4.4
+## Tendremos algo tal que esto
+# Cloudflare DNS primario
+nameserver 1.1.1.1
+# Cloudflare DNS secundario
+nameserver 1.0.0.1
+
+
+## Lo sustituimos por esto
+nameserver 127.0.0.53
+
 ```
 
-[Inicio de sección](#problemas-conocidos) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
+
+Y después habilitaremos de nuevo el servicio `systemd-resolved`.
+
+```bash
+sudo systemctl enable systemd-resolved
+sudo systemctl start systemd-resolved
+```
+
+[Inicio de sección](#revertir-cambios) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
 <br><br>

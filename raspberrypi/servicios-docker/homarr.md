@@ -26,7 +26,7 @@ Implementar Homarr como contenedor Docker proporciona varias ventajas, como la p
 Todas los ficheros relacionados con nuestra instalación se alojarán dentro de un directorio ubicado en `~/docker`, a fin de tener organizado nuestro sistema de ficheros.
 
 ```bash
-mkdir -p ~/docker/homarr/volume/{config,icons}
+mkdir -p ~/docker/homarr/volume/{config,data,icons}
 vim ~/docker/homarr/docker-compose.yml
 
 # Esta es la estructura que debe quedar (antes de iniciar el contenedor)
@@ -36,6 +36,7 @@ HOME/docker/homarr
 ├── docker-compose.yml
 └── volume
     ├── config
+    ├── data
     └── icons
 ```
 
@@ -72,6 +73,7 @@ services:
 
     volumes:
       - config:/app/data/configs
+      - data:/data
       - icons:/app/public/icons
 
 volumes:
@@ -80,6 +82,11 @@ volumes:
       type: none
       device: ${HOME}/docker/homarr/volume/config
       o: bind
+  data:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/homarr/volume/data
+      o: bind
   icons:
     driver_opts:
       type: none
@@ -87,7 +94,7 @@ volumes:
       o: bind
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homarr)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homarr)
 <br><br>
 
 # Acceso

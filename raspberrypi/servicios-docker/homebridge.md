@@ -77,7 +77,7 @@ services:
         max-file: "1"
 ```
 
-[Inicio de sección](#despliegue-pihole-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homebridge)
+[Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homebridge)
 <br><br>
 
 # Acceso
@@ -85,7 +85,7 @@ El aceso se hace mediante navegador web a través de la URL http://ip-raspberry:
 
 Para tener conexión con las distintas marcas de dispositivos, hay que usar el buscador de plugins.
 
-Por ejemplo, para añadir elementos de `smart life` hay que seguir las indicaciones de la siguiente imagen
+Por ejemplo, para añadir elementos de `smart life` hay que seguir las indicaciones de la siguiente animación.
 
 ![plugin-smartlife](../../img/ima-raspberrypi-servicios-homebridge-conf.ini-01.gif)
 
