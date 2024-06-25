@@ -2,7 +2,7 @@
 
 ![Header](../../img/ima-raspberrypi-servicios-pihole-header-01.png)
 
-Pi-hole es la mejor solución para terminar con la publicidad intrusiva, tanto de aplicaciones como de sitios web, en todos los dispositivos de nuestra red. Instalandola sobre nuestra Raspberry Pi, esta actuará como servidor DNS.
+**Pi-hole** es la mejor solución para terminar con la publicidad intrusiva, tanto de aplicaciones como de sitios web, en todos los dispositivos de nuestra red. Instalandola sobre nuestra Raspberry Pi, esta actuará como servidor DNS.
 
 Existen otras formas de instalación, pero he elegido Docker por las múltiples ventajas que aporta.
 

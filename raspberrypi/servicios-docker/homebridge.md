@@ -68,13 +68,20 @@ services:
     network_mode: host
 
     volumes:
-      - ${HOME}/docker/homebridge/volume/config:/homebridge
+      - config:/homebridge
 
     logging:
       driver: json-file
       options:
         max-size: "10mb"
         max-file: "1"
+
+volumes:
+  config:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/homebridge/volume/config
+      o: bind
 ```
 
 [Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homebridge)

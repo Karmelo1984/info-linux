@@ -2,7 +2,7 @@
 
 ![Header](../../img/ima-raspberrypi-servicios-portainer-header-01.png)
 
-Portainer es una herramienta de gestión de contenedores basada en web que simplifica la administración de Docker. Con Portainer, puedes controlar y administrar fácilmente tus contenedores Docker desde una interfaz gráfica intuitiva.
+**Portainer** es una herramienta de gestión de contenedores basada en web que simplifica la administración de Docker. Con Portainer, puedes controlar y administrar fácilmente tus contenedores Docker desde una interfaz gráfica intuitiva.
 
 Puedes instalar Portainer directamente en tu Raspberry Pi utilizando Docker, lo que facilita la gestión de tus contenedores desde cualquier lugar de tu red. Esta solución es ideal para usuarios que deseen una forma sencilla y eficiente de administrar sus contenedores Docker.
 

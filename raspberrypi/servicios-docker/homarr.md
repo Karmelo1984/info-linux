@@ -1,7 +1,8 @@
 # Homarr
 
 ![Header](../../img/ima-raspberrypi-servicios-homarr-header-01.png)
-Homarr es un panel de control versátil y potente para gestionar tu servidor en casa o como la mejor página de inicio para tu navegador favorito. Con Homarr, simplificarás la gestión de tu servidor gracias a su diseño elegante y moderno, que pone todas tus aplicaciones y servicios al alcance de tu mano. Además, cuenta con una comunidad activa de desarrolladores y usuarios, y puedes encontrar más información sobre el proyecto en Github.
+
+**Homarr** es un panel de control versátil y potente para gestionar tu servidor en casa o como la mejor página de inicio para tu navegador favorito. Con Homarr, simplificarás la gestión de tu servidor gracias a su diseño elegante y moderno, que pone todas tus aplicaciones y servicios al alcance de tu mano. Además, cuenta con una comunidad activa de desarrolladores y usuarios, y puedes encontrar más información sobre el proyecto en Github.
 
 Con Homarr, accederás y controlarás todo desde una ubicación conveniente, ya que se integra perfectamente con las aplicaciones que has añadido, proporcionándote información valiosa y un control total. La instalación es sencilla y admite una amplia gama de métodos de despliegue, como su despliegue en Deepin usando Docker, lo que facilita la gestión y escalabilidad de tu servidor.
 

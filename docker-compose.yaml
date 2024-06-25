@@ -1,0 +1,140 @@
+version: '3.7'
+
+services:
+  #================== Homarr
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: ${HOMARR_CONTAINER_NAME}            # Nombre del contenedor
+    restart: ${HOMARR_RESTART_POLICY}                   # Política de reinicio del contenedor
+    ports:
+      - '7575:7575'                                     # Puerto para la interfaz web
+    volumes:
+      - homarr_config:/app/data/configs                 # Volumen para la configuración de Homarr
+      - homarr_data:/data                               # Volumen para los datos de Homarr
+      - homarr_icons:/app/public/icons                  # Volumen para los iconos de Homarr
+
+  #================== Homebridge
+  homebridge:
+    image: homebridge/homebridge:latest
+    container_name: ${HOMEBRIDGE_CONTAINER_NAME}        # Nombre del contenedor
+    restart: ${HOMEBRIDGE_RESTART_POLICY}               # Política de reinicio del contenedor
+    network_mode: host                                  # Modo de red (usa la red del host)
+    volumes:
+      - ${HOME}/docker/homebridge/volume/config:/homebridge # Volumen para la configuración de Homebridge
+    logging:
+      driver: json-file                                 # Driver de logging
+      options:
+        max-size: "10mb"                                # Tamaño máximo del archivo de log
+        max-file: "1"                                   # Número máximo de archivos de log
+
+  #================== Pi-hole
+  pihole:
+    image: pihole/pihole:latest
+    container_name: ${PIHOLE_CONTAINER_NAME}            # Nombre del contenedor
+    restart: ${PIHOLE_RESTART_POLICY}                   # Política de reinicio del contenedor
+    environment:
+      TZ: ${TZ}                                         # Zona horaria
+      WEBPASSWORD: carmelo                              # Contraseña para la interfaz web
+      FTLCONF_LOCAL_IPV4: 192.168.1.20                  # Dirección IP local del dispositivo
+    hostname: naspicar                                  # Nombre del host
+    ports:
+      - 53:53/tcp                                       # Puerto TCP para DNS
+      - 53:53/udp                                       # Puerto UDP para DNS
+      - 8080:80/tcp                                     # Puerto para la interfaz web (HTTP)
+      - 443:443                                         # Puerto para la interfaz web (HTTPS)
+    volumes:
+      - pihole_etc:/etc/pihole                          # Volumen para la configuración de Pi-hole
+      - pihole_dnsmasq:/etc/dnsmasq.d                   # Volumen para la configuración de dnsmasq
+    dns:
+      - 1.1.1.1                                         # Servidor DNS
+      - 1.0.0.1                                         # Servidor DNS alternativo
+
+  #================== Plex
+  plex:
+    image: greensheep/plex-server-docker-rpi:latest
+    container_name: ${PLEX_CONTAINER_NAME}              # Nombre del contenedor
+    restart: ${PLEX_RESTART_POLICY}                     # Política de reinicio del contenedor
+    ports:
+      - "32400:32400"                                   # Puerto para la interfaz web de Plex
+    volumes:
+      - plex_config:/config                             # Volumen para la configuración de Plex
+      - plex_data:/data                                 # Volumen para los datos de Plex
+
+  #================== Portainer
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: ${PORTAINER_CONTAINER_NAME}         # Nombre del contenedor
+    restart: ${PORTAINER_RESTART_POLICY}                # Política de reinicio del contenedor
+    ports:
+      - "9000:9000"                                     # Puerto para la interfaz web de Portainer
+      - "9443:9443"                                     # Puerto para la interfaz segura de Portainer
+    volumes:
+      - /etc/localtime:/etc/localtime:ro                # Sincronización de la zona horaria
+      - /var/run/docker.sock:/var/run/docker.sock:ro    # Acceso al socket de Docker
+      - portainer_data:/data                            # Volumen para los datos de Portainer
+
+  #================== Samba
+  samba:
+    image: dockurr/samba:latest
+    container_name: ${SAMBA_CONTAINER_NAME}             # Nombre del contenedor
+    restart: ${SAMBA_RESTART_POLICY}                    # Política de reinicio del contenedor
+    environment:
+      USER: "samba"                                     # Usuario de Samba
+      PASS: "secret"                                    # Contraseña de Samba
+    volumes:
+      - samba_config:/etc/samba                         # Volumen para la configuración de Samba
+      - samba_data:/storage                             # Volumen para los datos de Samba
+    ports:
+      - "137:137"                                       # Puerto NetBios
+      - "138:138"                                       # Puerto NetBios
+      - "139:139"                                       # Puerto SMB
+      - "445:445"                                       # Puerto SMB
+
+  #================== Watchtower
+  watchtower:
+    image: containrrr/watchtower
+    container_name: ${WATCHTOWER_CONTAINER_NAME}        # Nombre del contenedor
+    restart: ${WATCHTOWER_RESTART_POLICY}               # Política de reinicio del contenedor
+    environment:
+      TZ: ${TZ}                                         # Zona horaria
+      WATCHTOWER_POLL_INTERVAL: 86400                   # Intervalo de sondeo (revisión cada día)
+      WATCHTOWER_MONITOR_ONLY: true                     # Modo monitor, solo informa
+      WATCHTOWER_CLEANUP: true                          # Limpieza de imágenes obsoletas
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock       # Acceso al socket de Docker
+
+volumes:
+  homarr_config:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/homarr/volume/config
+      o: bind
+
+  homarr_data:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/homarr/volume/data
+      o: bind
+
+  homarr_icons:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/homarr/volume/icons
+      o: bind
+
+  pihole_dnsmasq:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/pihole/volume/dnsmasq
+      o: bind
+
+  pihole_etc:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/pihole/volume/etc
+      o: bind
+
+  plex_config:
+    driver_opts:
+      type: none
+      device: ${HOME}/docker/plex/volume

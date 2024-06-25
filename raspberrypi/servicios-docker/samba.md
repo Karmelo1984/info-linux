@@ -2,7 +2,7 @@
 
 ![Header](../../img/ima-raspberrypi-servicios-samba-header-01.png)
 
-Samba en contenedores Docker simplifica el compartir archivos en tu red local, permitiendo el acceso desde cualquier dispositivo. Al implementarlo en tu Raspberry Pi, obtienes un servidor de archivos centralizado y fácil de mantener. Con Samba, puedes compartir archivos entre sistemas operativos diferentes de manera eficiente y segura, sin la necesidad de configuraciones complicadas. Además, al usar Docker, puedes actualizar y escalar tu entorno de Samba de manera sencilla, asegurando un funcionamiento estable y seguro de tus servicios de compartición de archivos.
+**Samba** en contenedores Docker simplifica el compartir archivos en tu red local, permitiendo el acceso desde cualquier dispositivo. Al implementarlo en tu Raspberry Pi, obtienes un servidor de archivos centralizado y fácil de mantener. Con Samba, puedes compartir archivos entre sistemas operativos diferentes de manera eficiente y segura, sin la necesidad de configuraciones complicadas. Además, al usar Docker, puedes actualizar y escalar tu entorno de Samba de manera sencilla, asegurando un funcionamiento estable y seguro de tus servicios de compartición de archivos.
 
 [Inicio de sección](#samba) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice)
 <br><br>
@@ -66,7 +66,7 @@ services:
 
   # ================== Samba
   samba:
-    image: dockurr/samba
+    image: dockurr/samba:latest
     container_name: samba       # Nombre del contenedor
     restart: unless-stopped     # Política de reinicio del contenedor
 

@@ -34,7 +34,7 @@ SSH es una herramienta fundamental para la administración remota de sistemas y 
 - [Configurar SSH para el acceso a servidor mediante clave pública](#configurar-ssh-para-el-acceso-a-servidor-mediante-clave-pública)
 - [Sección 1](#sección-1)
 
-[<< Página principal >>](../README.md)<br>
+[<< Página principal >>](../../README.md)<br>
 [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#ssh)
 <br><br>
 

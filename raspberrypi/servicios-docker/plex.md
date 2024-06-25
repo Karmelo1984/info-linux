@@ -2,7 +2,7 @@
 
 ![Header](../../img/ima-raspberrypi-servicios-plex-header-01.png)
 
-Plex es una plataforma de gestión y reproducción de contenido multimedia que te permite organizar, almacenar y acceder a tus películas, programas de televisión, música y fotos desde cualquier dispositivo. 
+**Plex** es una plataforma de gestión y reproducción de contenido multimedia que te permite organizar, almacenar y acceder a tus películas, programas de televisión, música y fotos desde cualquier dispositivo. 
 
 Utilizando un contenedor Docker, Plex ofrece una forma flexible y escalable de implementar su servidor, lo que facilita su instalación, actualización y mantenimiento. Además, Docker proporciona a Plex un entorno aislado, lo que garantiza una mayor seguridad y estabilidad del sistema, y permite una fácil migración entre diferentes sistemas operativos y plataformas de hardware sin afectar la configuración.
 

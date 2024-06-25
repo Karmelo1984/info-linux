@@ -2,7 +2,7 @@
 
 ![Header](../../img/ima-raspberrypi-servicios-watchtower-header-01.png)
 
-on Watchtower puedes actualizar la versión en ejecución de tu aplicación contenerizada simplemente subiendo una nueva imagen a Docker Hub o tu propio registro de imágenes. Watchtower descargará tu nueva imagen, apagará tu contenedor existente de manera controlada y lo reiniciará con las mismas opciones que se usaron cuando fue desplegado inicialmente.
+con **Watchtower** puedes actualizar la versión en ejecución de tu aplicación contenerizada simplemente subiendo una nueva imagen a Docker Hub o tu propio registro de imágenes. Watchtower descargará tu nueva imagen, apagará tu contenedor existente de manera controlada y lo reiniciará con las mismas opciones que se usaron cuando fue desplegado inicialmente.
 
 [Inicio de sección](#header) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice)
 <br><br>

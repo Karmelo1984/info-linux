@@ -7,12 +7,35 @@
 <br><br>
 
 # Índice
-1. [Reducir imagen de MicroSD](#reducir-imagen-de-microsd)
-2. [Añadir un disco duro externo a una Raspberry Pi](#añadir-un-disco-duro-externo-a-una-raspberry-pi)
-3. []()
+1. [Actualizar eeprom]()
+2. [Reducir imagen de MicroSD](#reducir-imagen-de-microsd)
+3. [Añadir un disco duro externo a una Raspberry Pi](#añadir-un-disco-duro-externo-a-una-raspberry-pi)
+4. []()
 
 [<< Raspberry Pi >>](./raspberrypi.md)<br>
 [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#header)
+<br><br>
+
+[Inicio de sección](#añadir-un-disco-duro-externo-a-una-raspberry-pi) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#header)
+<br><br>
+
+# Flashear eeprom
+
+```bash
+
+# Actualizar Raspbian
+sudo apt-get -y update && sudo apt-get -y upgrade
+
+# Instalar rpi-eeprom y rpi-eeprom-images
+sudo apt-get -y install rpi-eeprom rpi-eeprom-images 
+
+# Reiniciar Raspbian para que al iniciar cargue el nuevo firmware
+sudo shutdown -r now
+
+# Comprobar versión de Firmware
+sudo rpi-eeprom-update
+```
+[Inicio de sección](#flashear-eeprom) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#header)
 <br><br>
 
 # [Reducir imagen de MicroSD](https://github.com/Drewsif/PiShrink/blob/master/README.md)
