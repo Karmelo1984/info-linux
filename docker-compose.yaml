@@ -20,7 +20,7 @@ services:
     restart: ${HOMEBRIDGE_RESTART_POLICY}               # Política de reinicio del contenedor
     network_mode: host                                  # Modo de red (usa la red del host)
     volumes:
-      - ${HOME}/docker/homebridge/volume/config:/homebridge # Volumen para la configuración de Homebridge
+      - $HOME/docker/homebridge/volume/config:/homebridge # Volumen para la configuración de Homebridge
     logging:
       driver: json-file                                 # Driver de logging
       options:
@@ -107,34 +107,34 @@ volumes:
   homarr_config:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homarr/volume/config
+      device: $HOME/docker/homarr/volume/config
       o: bind
 
   homarr_data:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homarr/volume/data
+      device: $HOME/docker/homarr/volume/data
       o: bind
 
   homarr_icons:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homarr/volume/icons
+      device: $HOME/docker/homarr/volume/icons
       o: bind
 
   pihole_dnsmasq:
     driver_opts:
       type: none
-      device: ${HOME}/docker/pihole/volume/dnsmasq
+      device: $HOME/docker/pihole/volume/dnsmasq
       o: bind
 
   pihole_etc:
     driver_opts:
       type: none
-      device: ${HOME}/docker/pihole/volume/etc
+      device: $HOME/docker/pihole/volume/etc
       o: bind
 
   plex_config:
     driver_opts:
       type: none
-      device: ${HOME}/docker/plex/volume
+      device: $HOME/docker/plex/volume

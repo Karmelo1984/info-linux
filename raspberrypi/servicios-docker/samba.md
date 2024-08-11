@@ -71,12 +71,12 @@ services:
     restart: unless-stopped     # Política de reinicio del contenedor
 
     environment:
-      USER: "samba"
-      PASS: "secret"
+      USER: "carmeloPI3"
+      PASS: "carmeloPI3"
 
     volumes:
       - config:/etc/samba
-      - data:/storage        # Ruta carpeta compartida
+      - data:/storage           # Ruta carpeta compartida
 
     ports:
       - "137:137"               # Puerto protocolo NetBios
@@ -85,15 +85,15 @@ services:
       - "445:445"               # Puerto protocolo SMB
 
 volumes:
-  config:                        # Volumen para la configuracion Samba
+  config:                       # Volumen para la configuracion Samba
     driver_opts:
       type: none
-      device: ${HOME}/docker/samba/volume/config
+      device: $HOME/docker/samba/volume/config
       o: bind
-  data:                              # Volumen para las series de TV
+  data:                         # Volumen para la biblioteca multimedia
     driver_opts:
       type: none
-      device: /mnt/server              # Montar con mhddfs toda la biblioteca multimedia
+      device: /mnt/server       # Montar con mhddfs toda la biblioteca multimedia
       o: bind
 ```
 

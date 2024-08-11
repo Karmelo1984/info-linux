@@ -6,6 +6,8 @@
 
 Puedes instalar Portainer directamente en tu Raspberry Pi utilizando Docker, lo que facilita la gestión de tus contenedores desde cualquier lugar de tu red. Esta solución es ideal para usuarios que deseen una forma sencilla y eficiente de administrar sus contenedores Docker.
 
+&nbsp; &nbsp; [- Web oficial de Portainer.io](https://docs.portainer.io/)
+
 
 [Inicio de sección](#portainerio) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice)
 <br><br>
@@ -16,7 +18,7 @@ Puedes instalar Portainer directamente en tu Raspberry Pi utilizando Docker, lo 
 - [Definir ruta de instalación](#definir-ruta-de-instalación)
 - [Variables de entorno necesarias](#variables-de-entorno-necesarias)
 - [Despliegue `docker-compose.yml`](#despliegue-docker-composeyml)
-- [Acceso](#acceso)
+- [Acceso y configuración](#acceso-y-configuración)
 
 [<< Raspberry Pi >>](../raspberrypi.md)<br>
 [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#portainerio)
@@ -63,23 +65,23 @@ services:
   # ================== Portainer
   portainer:
     image: portainer/portainer-ce:latest
-    container_name: portainer                           # Nombre del contenedor
-    restart: unless-stopped                             # Política de reinicio del contenedor
+    container_name: portainer
+    restart: unless-stopped
     
     ports:
-      - "9000:9000"
+      - "8000:8000"
       - "9443:9443"
     
     volumes:
-      - /etc/localtime:/etc/localtime:ro                # Volumen para sincronizar la zona horaria
-      - /var/run/docker.sock:/var/run/docker.sock:ro    # Acceso al socket de Docker
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - data:/data
 
 volumes:
   data:
     driver_opts:
       type: none
-      device: ${HOME}/docker/portainer/volume/data
+      device: $HOME/docker/portainer/volume/data
       o: bind
 
 ```
@@ -87,8 +89,8 @@ volumes:
 [Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#portainerio)
 <br><br>
 
-# Acceso
+# Acceso y configuración
 El aceso se hace mediante navegador web a través de la URL http://ip-raspberry:9443
 
-[Inicio de sección](#acceso) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#portainerio)
+[Inicio de sección](#acceso-y-configuración) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#portainerio)
 <br><br>

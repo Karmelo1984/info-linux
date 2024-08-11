@@ -62,10 +62,15 @@ services:
   # ================== Homebridge
   homebridge:
     image: homebridge/homebridge:latest
-    container_name: homebridge                    # Nombre del contenedor
-    restart: unless-stopped                     # Política de reinicio del contenedor
+    container_name: homebridge            # Nombre del contenedor
+    restart: unless-stopped               # Política de reinicio del contenedor
 
-    network_mode: host
+    environment:
+      - TZ=Europe/Madrid
+      - PGID=1000
+      - PUID=1000
+
+    network_mode: host                    # Se expone en el puerto 8581
 
     volumes:
       - config:/homebridge
@@ -80,7 +85,7 @@ volumes:
   config:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homebridge/volume/config
+      device: $HOME/docker/homebridge/volume/config
       o: bind
 ```
 

@@ -28,7 +28,7 @@ Existen otras formas de instalación, pero he elegido Docker por las múltiples 
 Todas los ficheros relacionados con nuestra instalación se alojarán dentro de un directorio ubicado en `~/docker`, a fin de tener organizado nuestro sistema de ficheros.
 
 ```bash
-mkdir -p ~/docker/pihole/volume/{etc,dnsmasq}
+mkdir -p ~/docker/pihole/volume/{etc,dnsmasq,logs}
 vim ~/docker/pihole/docker-compose.yml
 
 # Esta es la estructura que debe quedar (antes de iniciar el contenedor)
@@ -38,7 +38,8 @@ HOME/docker/pihole
 ├── docker-compose.yml
 └── volume
     ├── dnsmasq
-    └── etc
+    ├── etc
+    └── logs
 ```
 
 
@@ -61,21 +62,24 @@ En primer lugar debemos deshabilitar el servicio `systemd-resolved` ya que este 
 ```bash
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
+
+## Aunque también se puede tener instalado este servidor DNS (avahi-daemon)
+sudo systemctl stop avahi-daemon
+sudo systemctl disable avahi-daemon
+sudo systemctl status avahi-daemon
+
 ```
 
 Seguidamente debemos editar el `dns` en el archivo `resolv.conf`.
 
 ```bash
+sudo cp /etc/resolv.conf /etc/resolv_old.conf
 sudo vim /etc/resolv.conf
 
-## Tendremos algo tal que esto
-nameserver 127.0.0.53
+  nameserver 127.0.0.1
 
-## Lo sustituimos por esto
-# Cloudflare DNS primario
-nameserver 1.1.1.1
-# Cloudflare DNS secundario
-nameserver 1.0.0.1
+sudo chattr +i /etc/resolv.conf # Para que ningún proceso lo pueda sobreescribir
+sudo reboot
 ```
 
 [Inicio de sección](#pasos-previos) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
@@ -100,35 +104,35 @@ services:
     
     environment:
       TZ: Europe/Madrid                 # Zona horaria
-      WEBPASSWORD: carmelo              # Contraseña para la interfaz web
-      FTLCONF_LOCAL_IPV4: 192.168.1.20  # Dirección IP local del dispositivo
+      WEBPASSWORD: carmeloPI3           # Contraseña para la interfaz web
     
-    hostname: naspicar
+    hostname: carmeloPI3
 
     ports:
       - 53:53/tcp                       # Mapeo de puertos TCP para DNS
       - 53:53/udp                       # Mapeo de puertos UDP para DNS
       - 8080:80/tcp                     # Puerto para la interfaz web (HTTP)
-      - 443:443                         # Puerto para la interfaz web (HTTPS)
     
     volumes:
       - etc:/etc/pihole                 # Volumen para configuración de Pi-hole
       - dnsmasq:/etc/dnsmasq.d          # Volumen para configuración de dnsmasq
-      
-    dns:
-      - 1.1.1.1                         # Configuración de servidores DNS
-      - 1.0.0.1
+      - logs:/var/log/pihole            # Volumen para logs
     
 volumes:
   etc:                                  # Volumen para configuración de Pi-hole
     driver_opts:
       type: none
-      device: ${HOME}/docker/pihole/volume/etc
+      device: $HOME/docker/pihole/volume/etc
       o: bind
   dnsmasq:                              # Volumen para configuración de dnsmasq
     driver_opts:
       type: none
-      device: ${HOME}/docker/pihole/volume/dnsmasq
+      device: $HOME/docker/pihole/volume/dnsmasq
+      o: bind
+  logs:                                 # Volumen para logs
+    driver_opts:
+      type: none
+      device: $HOME/docker/pihole/volume/logs
       o: bind
 ```
 
@@ -148,7 +152,7 @@ Después se debe configurar unas DNS para nuestro servidor DNS, es decir, como l
 
 ![Configuracion](../../img/ima-raspberrypi-servicios-pihole-conf.ini-01.gif)
 
-
+Por otro lado, se pueden añadir más elementos a las listas negras de PiHole, busca en este lugar (aconsejable usar solo las listas marcadas en verde, aunque puedes leer la información de la página y sacar tus conclusiones) "[The Big Blocklist Collection](https://firebog.net/)".
 
 [Inicio de sección](#configuración-extra) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#pi-hole)
 <br><br>
@@ -160,18 +164,10 @@ Al desisntalar el servicio de pi-hole, para reestablecer internet en nuestra ras
 Por lo que debemos editar el `dns` en el archivo `resolv.conf`.
 
 ```bash
-sudo vim /etc/resolv.conf
-
-## Tendremos algo tal que esto
-# Cloudflare DNS primario
-nameserver 1.1.1.1
-# Cloudflare DNS secundario
-nameserver 1.0.0.1
-
-
-## Lo sustituimos por esto
-nameserver 127.0.0.53
-
+sudo chattr -i /etc/resolv.conf
+sudo rm -f /etc/resolv.conf
+sudo cp /etc/resolv_old.conf /etc/resolv.conf
+sudo reboot
 ```
 
 

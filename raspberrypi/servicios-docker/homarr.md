@@ -2,11 +2,11 @@
 
 ![Header](../../img/ima-raspberrypi-servicios-homarr-header-01.png)
 
-**Homarr** es un panel de control versátil y potente para gestionar tu servidor en casa o como la mejor página de inicio para tu navegador favorito. Con Homarr, simplificarás la gestión de tu servidor gracias a su diseño elegante y moderno, que pone todas tus aplicaciones y servicios al alcance de tu mano. Además, cuenta con una comunidad activa de desarrolladores y usuarios, y puedes encontrar más información sobre el proyecto en Github.
+***Un panel de control sencillo pero poderoso para tu servidor.***
 
-Con Homarr, accederás y controlarás todo desde una ubicación conveniente, ya que se integra perfectamente con las aplicaciones que has añadido, proporcionándote información valiosa y un control total. La instalación es sencilla y admite una amplia gama de métodos de despliegue, como su despliegue en Deepin usando Docker, lo que facilita la gestión y escalabilidad de tu servidor.
+Simplifica la gestión de tu servidor con **Homarr**: un panel de control moderno y elegante que pone todas tus aplicaciones y servicios al alcance de tu mano. Con **Homarr**, puedes acceder y controlar todo desde un solo lugar conveniente. **Homarr** se integra perfectamente con las aplicaciones que has añadido, proporcionándote información valiosa y dándote control total. La instalación es muy fácil, y **Homarr** admite una amplia variedad de métodos de implementación.
 
-Implementar Homarr como contenedor Docker proporciona varias ventajas, como la portabilidad, la fácil instalación y la gestión de dependencias. Además, Docker ofrece aislamiento y seguridad para tus aplicaciones, así como la posibilidad de desplegar y actualizar Homarr de forma rápida y eficiente.
+&nbsp; &nbsp; [- Web oficial de Homarr](https://homarr.dev/)
 
 [Inicio de sección](#homarr) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice)
 <br><br>
@@ -17,7 +17,7 @@ Implementar Homarr como contenedor Docker proporciona varias ventajas, como la p
 - [Definir ruta de instalación](#definir-ruta-de-instalación)
 - [Variables de entorno necesarias](#variables-de-entorno-necesarias)
 - [Despliegue `docker-compose.yml`](#despliegue-docker-composeyml)
-- [Acceso](#acceso)
+- [Acceso y configuración](#acceso-y-configuración)
 
 [<< Raspberry Pi >>](../raspberrypi.md)<br>
 [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homarr)
@@ -66,13 +66,14 @@ services:
   # ================== Homarr
   homarr:
     image: ghcr.io/ajnart/homarr:latest
-    container_name: homarr                    # Nombre del contenedor
-    restart: unless-stopped                     # Política de reinicio del contenedor
+    container_name: homarr
+    restart: unless-stopped
 
     ports:
-      - '7575:7575'
+      - '8002:7575'
 
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
       - config:/app/data/configs
       - data:/data
       - icons:/app/public/icons
@@ -81,25 +82,27 @@ volumes:
   config:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homarr/volume/config
+      device: $HOME/docker/homarr/volume/config
       o: bind
   data:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homarr/volume/data
+      device: $HOME/docker/homarr/volume/data
       o: bind
   icons:
     driver_opts:
       type: none
-      device: ${HOME}/docker/homarr/volume/icons
+      device: $HOME/docker/homarr/volume/icons
       o: bind
 ```
 
 [Inicio de sección](#despliegue-docker-composeyml) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homarr)
 <br><br>
 
-# Acceso
+# Acceso y configuración
 El aceso se hace mediante navegador web a través de la URL http://ip-raspberry:7575
 
-[Inicio de sección](#acceso) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#samba)
+Revisa el siguiente [link](https://homarr.dev/docs/getting-started/after-the-installation) (necesitas conexión a internet).
+
+[Inicio de sección](#acceso-y-configuración) &nbsp; &nbsp; - &nbsp; &nbsp; [Índice](#índice) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#homarr)
 <br><br>

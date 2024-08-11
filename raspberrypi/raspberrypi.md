@@ -26,10 +26,11 @@ Raspberry Pi es una plataforma versátil y asequible que ha ganado popularidad e
 <br><br>
 
 # Índice
-1. [Crear un servidor NAS - OpenMedia Vault](./servidorNAS.md)
+1. [Inicialización básica "Raspberry Pi"](./instalacion-basica.md)
 2. [Instalar Docker y Docker compose en "Raspberry Pi"](./docker.md)
-3. [Utilidades varias](./utilidadespi.md)
-4. [Configuración Personalizada de la Instalación](#configuración-personalizada-de-la-instalación)
+3. [Crear un servidor NAS - OpenMedia Vault](./servidorNAS.md)
+4. [Utilidades varias](./utilidadespi.md)
+5. [Configuración Personalizada de la Instalación](#configuración-personalizada-de-la-instalación)
    
 [<< Página principal >>](../README.md)<br>
 [Índice](#índice ) &nbsp; &nbsp; - &nbsp; &nbsp;[Arriba](#raspberry-pi)
@@ -126,7 +127,7 @@ Este equipo actúa como DNS secundario y está conectado al router a través de 
    * `Plex:` Servidor de medios que permite organizar, transmitir y acceder a contenido multimedia. [`Configuración`](./servicios-docker/plex.md).
    * `Portainer:` Herramienta de gestión de contenedores Docker con una interfaz web fácil de usar. [`Configuración`](./servicios-docker/portainer.md).
    * `Samba:` Implementación de protocolos de archivos compartidos de Windows para sistemas no Windows. [`Configuración`](./servicios-docker/samba.md).
-   * `Watchtower:` Servicio que actualiza automáticamente contenedores Docker con las últimas versiones disponibles [`Configuración`](./servicios-docker/wathtower.md).
+   * `Watchtower:` Servicio que actualiza automáticamente contenedores Docker con las últimas versiones disponibles [`Configuración`](./servicios-docker/watchtower.md).
    * `Wireguard:` Protocolo VPN de código abierto y de alto rendimiento. [`Configuración`](./servicios-docker/wireguard.md).
 
 

@@ -89,7 +89,7 @@ volumes:
   config:                        # Volumen para la configuración Plex
     driver_opts:
       type: none
-      device: ${HOME}/docker/plex/volume/config
+      device: $HOME/docker/plex/volume/config
       o: bind
   data:                              # Volumen para contenido multimedia
     driver_opts:
