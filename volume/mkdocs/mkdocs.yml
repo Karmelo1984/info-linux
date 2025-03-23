@@ -3,10 +3,16 @@ site_author: Carmelo Molero Castillo
 
 # Extensiones de Markdown
 markdown_extensions:
-   - admonition
-   - codehilite
-   - toc:
-      permalink: true
+  - markdown.extensions.extra    # Soporte para tablas, listas anidadas y otras mejoras
+  - markdown.extensions.nl2br    # Convierte saltos de línea en <br>
+  - admonition                   # Bloques de advertencia y notas
+  - codehilite                   # Resaltado de sintaxis en código
+  - pymdownx.tabbed              # Pestañas dentro del contenido
+  - pymdownx.superfences         # Mejora los bloques de código y resalta mejor la sintaxis
+  - pymdownx.betterem            # Corrige problemas con negritas y cursivas
+  - toc:
+      permalink: true            # Genera tabla de contenido con enlaces permanentes
+
 
 # Tema y configuración
 theme:
@@ -42,10 +48,21 @@ nav:
       - Comandos útiles: docker/comandos.md
       - Optimización y troubleshooting: docker/troubleshooting.md
    - Linux:
+      - Script:
+         - Bash:
+            - "file_detail_info": linux/script/bash/file_detail_info/file_detail_info.md
+            - "file_rename": linux/script/bash/file_rename/file_rename.md
+            - "mp4_to_mkv": linux/script/bash/mp4_to_mkv/mp4_to_mkv.md
+            - "resize_convert_images": linux/script/bash/resize_convert_images/resize_convert_images.md
+            - "search_film": linux/script/bash/search_film/search_film.md
+            - "smart_monitor": linux/script/bash/smart_monitor/smart_monitor.md
+            - "speed_test_internet": linux/script/bash/speed_test_internet/speed_test_internet.md
+         #- Python: ""
       - Sistemas de archivos:
          - Restaurar particiones clonezilla: linux/sistemas-archivos/particiones/restaurar_particiones_clonezilla/restaurar_particiones_clonezilla.md
          - MHDDFS: linux/sistemas-archivos/mhddfs/mhddfs.md
       - Redes:
+         - Guía DDNS: linux/redes/ddns/ddns.md
          - Guía DHCP: linux/redes/dhcp/dhcp.md
          - Guía SSH: linux/redes/ssh/ssh.md
    - Raspberry Pi:
@@ -57,3 +74,7 @@ nav:
          - Instalar Docker: raspberrypi/utilidades/docker/docker.md
          - Reducir imagen MicroSD: raspberrypi/utilidades/microsd/microsd.md
       - Servidor NAS: raspberrypi/servidor-nas/servidor-nas.md
+   - Proyectos de Programación:
+      - hdd_manager: proyectos/programa1/programa1.md
+      - association_manager: proyectos/programa2/programa2.md
+      - licence_manager: proyectos/programa2/programa2.md
