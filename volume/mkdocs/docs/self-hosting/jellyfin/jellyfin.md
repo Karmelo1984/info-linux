@@ -140,6 +140,38 @@ Sustituye `ip-server` por la IP de tu dispositivo.
 
 ---
 
+## Personalización
+
+### Cambiar apariencia
+
+#### Opción 1: Importando CSS
+
+Se pueden buscar por la web distintos estilos como este de [prayag17](https://github.com/prayag17/JellySkin) que tiene una apariencia similar al NetFlix.  
+Se debe configurar importando el enlace aquí:
+
+![Importar CSS](img/img-jellyfin-import-css-01.png)
+
+#### Opción 2: Administrando el plugin **skin-manager**
+
+Necesitaremos pegar este enlace `https://raw.githubusercontent.com/danieladov/JellyfinPluginManifest/master/manifest.json`
+
+1. Agregar un nuevo repositorio en `Dashboard / Catálogo / Ajustes ⚙️ / Repositorio ➕`
+    ![Importar Repositorio](img/img-jellyfin-import-repo-01.png)
+
+2. Instalamos el nuevo repositorio, que ya se ha tenido que insertar
+    ![Instalar Repositorio](img/img-jellyfin-import-repo-02.png)
+
+3. Reiniciamos el servidor (con reiniciar el contenedor docker es suficiente)
+
+4. Nos vamos a `Dashboard / Skin Manager` y elegimos el skin que más nos guste
+    ![Instalar Repositorio](img/img-jellyfin-import-repo-03.png)
+
+### Cambiar Nombre de la pestaña
+
+
+
+---
+
 ## Configuración de la biblioteca
 Puedes ver la configuración de medios en la [documentación oficial](https://jellyfin.org/docs/general/server/devices). Aunque aquí muestro la estructura base que debes tener en los HDD's para que sea reconocible.
 

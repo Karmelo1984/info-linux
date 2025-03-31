@@ -126,3 +126,31 @@ sudo systemctl status ssh
 
 **Error: "Permission denied (publickey)"**  
 🔹 Solución: Asegúrate de que la clave pública esté en `~/.ssh/authorized_keys` en el servidor.
+
+---
+
+## **Aplicaciones Prácticas de SSH**  
+
+SSH permite muchas aplicaciones avanzadas más allá del acceso remoto. Aquí te mostramos algunos ejemplos útiles:  
+
+### **Montar una carpeta remota con SSHFS**  
+Si necesitas acceder a archivos de un servidor como si fueran locales, puedes usar **SSHFS**.  
+
+#### **Ejemplo: Acceder a una base de datos SQLite con DBeaver**  
+
+1. **Instala SSHFS en tu máquina local:**  
+   ```bash
+   sudo apt install sshfs
+   ```  
+2. **Monta la carpeta remota en tu máquina local:**  
+   ```bash
+   mkdir ~/jellyfin_db
+   sshfs mediauser@192.168.1.140:/home/mediauser/docker/jellyfin/volume/config/data ~/jellyfin_db
+   ```  
+3. **Abre DBeaver y selecciona el archivo:**  
+   - Ve a `~/jellyfin_db/jellyfin.db` y ábrelo como base de datos SQLite.  
+4. **Desmontar la carpeta cuando termines:**  
+   ```bash
+   fusermount -u ~/jellyfin_db
+   ```  
+   

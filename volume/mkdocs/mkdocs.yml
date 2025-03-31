@@ -1,30 +1,31 @@
+---
 site_name: Carmelo-Proyect
 site_author: Carmelo Molero Castillo
 
-# Extensiones de Markdown
 markdown_extensions:
-  - markdown.extensions.extra    # Soporte para tablas, listas anidadas y otras mejoras
-  - markdown.extensions.nl2br    # Convierte saltos de línea en <br>
-  - admonition                   # Bloques de advertencia y notas
-  - codehilite                   # Resaltado de sintaxis en código
-  - pymdownx.tabbed              # Pestañas dentro del contenido
-  - pymdownx.superfences         # Mejora los bloques de código y resalta mejor la sintaxis
-  - pymdownx.betterem            # Corrige problemas con negritas y cursivas
+  - markdown.extensions.extra  # Soporte para tablas y listas anidadas
+  - markdown.extensions.nl2br  # Convierte saltos de línea en <br>
+  - admonition                 # Bloques de advertencia y notas
+  - codehilite                 # Resaltado de sintaxis en código
+  - pymdownx.extra             # Extensiones avanzadas de Markdown
+  - pymdownx.tabbed            # Pestañas dentro del contenido
+  - pymdownx.superfences       # Mejora bloques de código
+  - pymdownx.betterem          # Corrige problemas con negritas y cursivas
+  - pymdownx.emoji             # Soporte para emojis
   - toc:
-      permalink: true            # Genera tabla de contenido con enlaces permanentes
-
+      permalink: true          # Enlaces permanentes en la tabla de contenido
 
 # Tema y configuración
 theme:
-   name: "mkdocs"
-   language: "es"
-   color_mode: "dark"
-   user_color_mode_toggle: true
-   prev_next_buttons_location: "bottom"
+  name: "mkdocs"
+  language: "es"
+  color_mode: "dark"
+  user_color_mode_toggle: true
+  prev_next_buttons_location: "bottom"
 
 # Navegación
 nav:
-   - Self-Hosting:
+  - Self-Hosting:
       - Duplicati: self-hosting/duplicati/duplicati.md
       - Homarr: self-hosting/homarr/homarr.md
       - Homebridge: self-hosting/homebridge/homebridge.md
@@ -39,7 +40,7 @@ nav:
       - StirlingPDF: self-hosting/stirling_pdf/stirlingpdf.md
       - Watchtower: self-hosting/watchtower/watchtower.md
       - WatchYourLAN: self-hosting/watchyourlan/watchyourlan.md
-   - Docker:
+  - Docker:
       - Introducción: docker/introduccion.md
       - Imágenes: docker/imagenes.md
       - Contenedores: docker/contenedores.md
@@ -47,34 +48,36 @@ nav:
       - Redes: docker/redes.md
       - Comandos útiles: docker/comandos.md
       - Optimización y troubleshooting: docker/troubleshooting.md
-   - Linux:
+  - Linux:
       - Script:
-         - Bash:
-            - "file_detail_info": linux/script/bash/file_detail_info/file_detail_info.md
-            - "file_rename": linux/script/bash/file_rename/file_rename.md
-            - "mp4_to_mkv": linux/script/bash/mp4_to_mkv/mp4_to_mkv.md
-            - "resize_convert_images": linux/script/bash/resize_convert_images/resize_convert_images.md
-            - "search_film": linux/script/bash/search_film/search_film.md
-            - "smart_monitor": linux/script/bash/smart_monitor/smart_monitor.md
-            - "speed_test_internet": linux/script/bash/speed_test_internet/speed_test_internet.md
-         #- Python: ""
+          - Bash:
+              - "file_detail_info": linux/script/bash/file_detail_info/file_detail_info.md
+              - "file_rename": linux/script/bash/file_rename/file_rename.md
+              - "mp4_to_mkv": linux/script/bash/mp4_to_mkv/mp4_to_mkv.md
+              - "resize_convert_images": linux/script/bash/resize_convert_images/resize_convert_images.md
+              - "search_film": linux/script/bash/search_film/search_film.md
+              - "smart_monitor": linux/script/bash/smart_monitor/smart_monitor.md
+              - "speed_test_internet": linux/script/bash/speed_test_internet/speed_test_internet.md
       - Sistemas de archivos:
-         - Restaurar particiones clonezilla: linux/sistemas-archivos/particiones/restaurar_particiones_clonezilla/restaurar_particiones_clonezilla.md
-         - MHDDFS: linux/sistemas-archivos/mhddfs/mhddfs.md
+          - Restaurar particiones Clonezilla: 
+              linux/sistemas-archivos/particiones/restaurar_particiones_clonezilla/restaurar_particiones_clonezilla.md
+          - MHDDFS: linux/sistemas-archivos/mhddfs/mhddfs.md
       - Redes:
-         - Guía DDNS: linux/redes/ddns/ddns.md
-         - Guía DHCP: linux/redes/dhcp/dhcp.md
-         - Guía SSH: linux/redes/ssh/ssh.md
-   - Raspberry Pi:
+          - Guía DDNS: linux/redes/ddns/ddns.md
+          - Guía DHCP: linux/redes/dhcp/dhcp.md
+          - Guía SSH: linux/redes/ssh/ssh.md
+  - Raspberry Pi:
       - Introducción: raspberrypi/raspberrypi.md
       - Instalación básica: raspberrypi/instalacion-basica/instalacion-basica.md
       - Utilidades: 
-         - Añadir HDD externo: raspberrypi/utilidades/pi-hdd/pi-hdd.md
-         - Flashear EEPROM: raspberrypi/utilidades/eeprom/eeprom.md
-         - Instalar Docker: raspberrypi/utilidades/docker/docker.md
-         - Reducir imagen MicroSD: raspberrypi/utilidades/microsd/microsd.md
+          - Añadir HDD externo: raspberrypi/utilidades/pi-hdd/pi-hdd.md
+          - Flashear EEPROM: raspberrypi/utilidades/eeprom/eeprom.md
+          - Instalar Docker: raspberrypi/utilidades/docker/docker.md
+          - Reducir imagen MicroSD: raspberrypi/utilidades/microsd/microsd.md
       - Servidor NAS: raspberrypi/servidor-nas/servidor-nas.md
-   - Proyectos de Programación:
-      - hdd_manager: proyectos/programa1/programa1.md
-      - association_manager: proyectos/programa2/programa2.md
-      - licence_manager: proyectos/programa2/programa2.md
+  - Proyectos de Programación:
+      - licence_manager: proyectos/license_manager/index.md
+      - association_manager: proyectos/association_manager/index.md
+      - hdd_manager: proyectos/hdd_manager/index.md
+  - Desarrollo:
+      - Git: dev/git/git.md

@@ -8,7 +8,7 @@ services:
 
     environment:
       LIVE_RELOAD_SUPPORT: 'true'
-      ADD_MODULES: 'fontawesome-markdown mkdocs-git-revision-date-localized-plugin mkdocs-material'
+      ADD_MODULES: 'fontawesome-markdown mkdocs-git-revision-date-localized-plugin mkdocs-material mkdocs-mermaid2-plugin'
       FAST_MODE: 'true'
       DOCS_DIRECTORY: '/mkdocs'
 
