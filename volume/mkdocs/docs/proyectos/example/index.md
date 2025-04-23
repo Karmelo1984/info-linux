@@ -17,17 +17,22 @@ tags: [documentación]
 ---
 
 ## 🎯 **Objetivos**  
-- ✅ [Objetivo 1]  
-- ✅ [Objetivo 2]  
-- ✅ [Objetivo 3]  
+- [Objetivo 1]  
+- [Objetivo 2]  
+- [Objetivo 3]  
 
 ---
 
-## 📚 **Épicas**  
+## 🛠 **Tecnologías Utilizadas**  
+- **Backend:** [Tecnología Backend]  
+- **Frontend:** [Tecnología Frontend]  
+- **Base de datos:** [Base de Datos]  
+- **Infraestructura:** [Infraestructura]  
 
-- 🏗 [Épica 1](epic/epica1.md)  
-- 🏗 [Épica 2](epic/epica2.md)  
-- 🏗 [Épica 3](epic/epica3.md)  
+---
+
+## 📦 **Repositorio del Código**  
+[Enlace al repositorio en GitHub/GitLab](https://github.com/usuario/repositorio)  
 
 ---
 
@@ -38,28 +43,23 @@ tags: [documentación]
 
 ---
 
-## 🛠 **Tecnologías Utilizadas**  
-- 🖥 **Backend:** [Tecnología Backend]  
-- 🎨 **Frontend:** [Tecnología Frontend]  
-- 🗄 **Base de datos:** [Base de Datos]  
-- ☁️ **Infraestructura:** [Infraestructura]  
-
-## 📦 **Repositorio del Código**  
-🔗 [Enlace al repositorio en GitHub/GitLab](https://github.com/usuario/repositorio)  
-
----
-
-## 📊 **Diagramas del Sistema**
-
-- 🖼️ [Diagrama de Clases](diagramas/diagrama_clases.md)
-- 🖼️ [Diagrama Entidad-Relación](diagramas/diagrama_er.md)
+## 📊 **Diagramas del Sistema**  
+- [Diagrama de Clases](diagramas/diagrama_clases.md)
+- [Diagrama Entidad-Relación](diagramas/diagrama_er.md)
 
 ---
 
 ## 👥 **Actores del Sistema**
-- 👤 [Actores](actores.md)
+- [Actores](actores.md)
 
 ---
 
 ## 🗂️ **Secciones**
-- 📂 [Secciones de la Aplicación](secciones.md)
+- [Secciones de la Aplicación](secciones.md)
+
+---
+
+## 📚 **Épicas**  
+- [Épica 1](epic/epica1.md)  
+- [Épica 2](epic/epica2.md)  
+- [Épica 3](epic/epica3.md)  

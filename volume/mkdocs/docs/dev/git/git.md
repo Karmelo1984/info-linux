@@ -139,6 +139,26 @@ Eliminar una rama:
 git branch -d nombre-rama
 ```
 
+#### Crear una rama basada en `main` sin cambiarte de rama
+Si estás trabajando en otra rama y necesitas crear una nueva rama a partir de `main`, puedes hacerlo así:
+
+```bash
+git fetch origin main
+git branch nueva-rama origin/main
+```
+
+Esto crea una nueva rama local `nueva-rama` basada en el estado remoto actual de `main` sin necesidad de salir de tu rama actual.
+
+#### Crear una etiqueta (tag) del estado actual de `main`
+Para marcar el estado actual de la rama `main` con una etiqueta, por ejemplo `v1.0.0`:
+
+```bash
+git tag v1.0.0 origin/main
+git push origin v1.0.0
+```
+
+Esto es útil para versionar hitos importantes en el proyecto.
+
 ### Restablecer cambios
 Revertir cambios no confirmados:
 ```bash
